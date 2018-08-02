@@ -29,10 +29,16 @@
           <div slot="header" class="clearfix">
             <span>默认管理员</span>
           </div>
-          <div class="filter-container">
-            <el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" :placeholder="$t('table.title')" v-model="listQuery.title">
-            </el-input>
-          </div>
+           <div class="tab-container">
+             <el-tag>mounted times ：{{createdTimes}}</el-tag>
+             <el-tabs style='margin-top:15px;' v-model="activeName" type="border-card">
+               <el-tab-pane v-for="item in tabMapOptions" :label="item.label" :key='item.key' :name="item.key">
+                 <keep-alive>
+                   <tab-pane v-if='activeName==item.key' :type='item.key' @create='showCreatedTimes'></tab-pane>
+                 </keep-alive>
+               </el-tab-pane>
+             </el-tabs>
+           </div>
           <div>
             <li>默认管理员</li>
             <li>代理商角色</li>
