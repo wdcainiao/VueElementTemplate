@@ -198,7 +198,22 @@ export const asyncRouterMap = [
       }
     ]
   },
-
+  {
+    path: '/management',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'management',
+    meta: {
+      title: '用户权限设置',
+      icon: 'component'
+    },
+    children: [
+      { path: 'management', component: _import('management/management'), name: 'management', meta: { title: '组织结构' }},
+      { path: 'management', component: _import('management/management'), name: 'management', meta: { title: '角色管理' }},
+      { path: 'management', component: _import('management/management'), name: 'management', meta: { title: '用户管理' }},
+      { path: 'management', component: _import('management/management'), name: 'management', meta: { title: '菜单管理' }}
+    ]
+  },
   {
     path: '/permission',
     component: Layout,
